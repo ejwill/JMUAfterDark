@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<title>JMU AfterDark</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+	<script type="text/javascript" src="http://static.stackmob.com/js/json2-min.js"></script>
+	<script type="text/javascript" src="http://static.stackmob.com/js/underscore-1.4.1-min.js"></script>
+	<script type="text/javascript" src="http://static.stackmob.com/js/backbone-0.9.2-min.js"></script>
+	<script type="text/javascript" src="http://static.stackmob.com/js/stackmob-js-0.6.1-min.js"></script>
+	<script type="text/javascript">
+	StackMob.init({
+	    appName: "jmuafterdark",
+	    clientSubdomain: "jwillwillgmailcom",
+	    publicKey: "5781e498-cc54-4447-a7b5-6612bed8a2eb",
+	    apiVersion: 0
+	});
+	</script>
+
+<script type="text/javascript">
+      $(document).ready(function() {
+
+        // Define your class/object
+        var TestObject = StackMob.Model.extend({
+          schemaName : 'testobject' //Tell StackMob to save instances of TestObject to the table "testobject"
+        });
+
+        // Create a local instance of TestObject by passing JSON into the constructor
+        // We have several different field types here as examples.
+        // Fields must be lower case.
+        var to = new TestObject({
+          message : 'This test object instance will show you how StackMob creates your DB from JSON data',
+          integer : 1,
+          decimal : 2.5,
+          istestobject : true,
+          stringarray : ['This', 'is', 'an', 'array', 'of', 'strings'],
+          intarray : [1, 2, 3, 4, 5],
+          decimals : [1.1, 2.2, 3.3],
+          booleans : [true, false, true, false]
+        });
+
+        // Call "create" to fire off the AJAX call to StackMob to create this object instance
+        // If this is the first time StackMob has seen a 'testobject', StackMob will create the database schema automatically for you.
+        // When the server is done, AJAX callbacks are fired: 'success' / 'error'
+        to.create({
+          success : function(model) {
+            // Notice how StackMob auto generated a unique primary key for this object instance under "testobject_id".
+            // Schema primary keys are [schema name]_id
+            // If you specified "testobject_id" in your JSON, StackMob will use your given one instead.
+            console.debug(model.toJSON());
+            $(".error").hide();
+            $(".success").show();
+          },
+          error : function(model, response) {
+            console.debug("Oops there was an error in creating the object.");
+            console.debug("Have you initialized your JS SDK?");
+            console.debug("Are you running this on StackMob's Local Runner?");
+            console.debug("Are you running this on StackMob's GitHub-integrated hosting?")
+            console.debug(response);
+          }
+        });
+      });
+
+		</script>
+</head>
+  <body onload=" init();" id="stage" class="theme">
+		
+    <!-- Start of first page -->
+<div data-role="page"  id="test">
+<script type="text/javascript">
+/**
+ * This code declares your class and saves an object "blogentry" to the table on StackMob.
+ * StackMob will create the table for you automatically based on your JSON.
+ */
+var BlogEntry = StackMob.Model.extend({ schemaName: 'blogentry' });
+var entry = new BlogEntry({ message: 'hello world!' });
+entry.create();
+</script>

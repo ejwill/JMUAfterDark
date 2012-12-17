@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<title>JMU AfterDark</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+  </head>
+  <body ><!--onload=" init();"-->
+	<div>
+		<script type="text/javascript" src="cordova-2.2.0.js"></script>
+		<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+            app.initialize();
+        	</script>
+	</div>
+    <!-- Start of first page -->
+<div data-role="page"  id="home" data-theme="a">
+
+	<div data-role="header" data-id="foo1" data-position="fixed">
+		<h1>JMU AfterDark</h1>
+		<a href="#home" data-role="button" data-rel="back">Back</a>
+		<a href="about.html" data-role="button" data-icon="grid">About</a>
+		 
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="a">	
+		<p>
+			<br>What Would You Like To Do?</br>
+		</p>		
+		<a href="food.html" data-role="button" data-theme="b">Order Food</a>
+		<a href="bar.html" data-role="button" data-theme="b">Find a Bar</a>
+		<a href="cab.html" data-role="button" data-theme="b">Get a Cab</a>
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="a">
+			<p>
+				<h3>Alpha Build There will be Problems</h3>
+				<h5>
+					<br>Some of the menu link's do not open - won't open b/c they are pdfs</br>
+					<br>Find an Error or want to Comment email me at JMUAfterDark@gmail.com</br>
+					<br>Version 1.0</br>
+				</h5>
+			</p>
+		</div>
+
+</div><!-- /page -->
+
+</body>
+</html>
